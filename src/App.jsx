@@ -1,34 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './index.css'
+import { useEffect } from 'react'
+import arrow from './assets/arrow-down.png'
+import chat from './assets/chat.png'
+import send from './assets/send.png'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    const presentationButton = document.getElementById('pbutton');
+    const chatBox = document.getElementById('chatbox');
+
+    if (presentationButton && chatBox) { 
+      presentationButton.addEventListener('click', () => {
+        chatBox.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+
+    
+    <main className="main-container">
+      <div className="presentation">
+        <h1>BIENVENIDO A CHAT-SPACE</h1>
+        <div className="presentation-text">
+          <img src={arrow} alt="" />
+          <p>Comienza a chatear</p>
+          <img src={arrow} alt="" />
+        </div>
+        <button id='pbutton'><img src={chat} alt="" /></button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+
+      <div className="chat-container">
+        <div className="chat-box" id='chatbox'>
+          <div className="chat-box-top">
+            <img src={chat} alt="" />
+            <h1>Chat-Space</h1>
+            <button>+</button>
+          </div>
+        </div>
+        <div className="chat-input">
+          <input type="text" placeholder='Escribe tu mensaje...'/>
+          <img src={send} alt="" />
+        </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </main>
   )
 }
 

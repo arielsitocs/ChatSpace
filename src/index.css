@@ -75,12 +75,15 @@
     height: 100vh;
 
     .chat-box {
+      display: flex;
+      flex-direction: column;
       width: 80%;
       min-height: 70%;
       background-color: rgb(255, 255, 255);
       border: 1px solid black;
       border-top-left-radius: 20px;
       border-top-right-radius: 20px;
+      overflow-y: auto;
 
       .chat-box-top {
         display: flex;
